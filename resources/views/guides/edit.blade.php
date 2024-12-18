@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('image/logo2.jpg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/logo2.jpg') }}" type="image/x-icon">
     <title>Edit Panduan</title>
     <link rel="stylesheet" href="{{ asset('css/guide/edit.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">

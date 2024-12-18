@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="{{ asset('image/logo2.jpg') }}" type="image/x-icon">
-  <title>Dashboard Admin</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="js/dashboard.js">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,25 +15,31 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="logo">
-        <img src="img/logo.png" alt="Logo" class="logo-image">
+        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo-image">
       </div>
       <ul class="menu">
         <li class="menu-item">
             <a href="{{ route('dashboard') }}">
-              <img src="img/home.png" alt="Dashboard Icon" class="menu-icon">
+              <img src="{{ asset('img/home.png') }}" alt="Dashboard Icon" class="menu-icon">
               Dashboard
             </a>
           </li>
         <li class="menu-item">
             <a href="{{ route('lacak') }}">
-                <img src="img/form.png" alt="Laporan Icon" class="menu-icon">
+                <img src="{{ asset('img/form.png') }}" alt="Laporan Icon" class="menu-icon">
                 Laporan
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('ulasan') }}">
-              <img src="img/review.png" alt="Ulasan Icon" class="menu-icon">
+            <a href="{{ route('lacak_ulasan') }}">
+              <img src="{{ asset('img/review.png') }}" alt="Ulasan Icon" class="menu-icon">
               Ulasan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('guides.index') }}">
+              <img src="{{ asset('img/panduan.png') }}" alt="Panduan Icon" class="menu-icon">
+              Panduan
             </a>
           </li>
       </ul>

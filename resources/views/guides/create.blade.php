@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="{{ asset('image/logo2.jpg') }}" type="image/x-icon">
- <title>Tambah Panduan</title>
+  <link rel="icon" href="{{ asset('img/logo2.jpg') }}" type="image/x-icon">
+  <title>Tambah Panduan</title>
   <link rel="stylesheet" href="{{ asset('css/guide/create.css') }}">
   <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
