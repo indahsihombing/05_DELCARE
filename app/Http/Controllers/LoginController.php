@@ -1,41 +1,55 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function FormLoginPengguna()
+    public function showLoginForm()
     {
         return view('login');
     }
 
-    public function LoginPengguna(Request $request)
+    public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
+        ], [
+            'email.required' => 'Please fill out this field.',
+            'password.required' => 'Please fill out this field.',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $infologin = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
-        if (Auth::guard('pengguna')->attempt($credentials)) {
-            return redirect()->intended('beranda');
+        if (Auth::attempt($infologin)) {
+            $user = Auth::user();
+            if ($user->role == 'user') {
+                return redirect()->route('user');
+            }
+        } elseif (Auth::guard('admin')->attempt($infologin)) {
+            $admin = Auth::guard('admin')->user();
+            if ($admin->role == 'duktek') {
+                return redirect()->route('dashboard');
+            } elseif ($admin->role == 'maintenance') {
+                return redirect()->route('dashboard');
+            }
+        } else {
+            return redirect()->back()->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();
         }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
     }
 
     public function logout(Request $request)
     {
-        Auth::guard('pengguna')->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        return redirect()->route('pengguna.login');
+        return redirect('/login'); // Pastikan ini mengarah ke halaman login
     }
+        
 }
