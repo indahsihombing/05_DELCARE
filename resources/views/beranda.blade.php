@@ -3,44 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prakerja Help Page</title>
-    <link rel="stylesheet" href="css/homepage.css">
+    <title>Delcare | Beranda</title>
+    <link rel="stylesheet" href="{{ asset('css/beranda.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    @include('navbar')
+    
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">Delcare</div>
-            <nav class="nav">
-                <a href="#" class="active">Beranda</a>
-                <a href="#">Panduan</a>
-            </nav>
-            <div class="auth-buttons">
-                <button class="logout-btn">Keluar</button>
-                <i class="fa fa-user profile-icon"></i>
-            </div>
-        </div>
-        <!-- Title Section within the Header for a seamless look -->
-        <div class="title-section">
-            <h1>Apa yang bisa kami bantu?</h1>
-        </div>
-    </header>
 
     <!-- Help Section -->
     <main class="main-content">
         <div class="help-section">
             <div class="help-card">
-                <img src="image/online-registration.png" alt="Pengiriman Formulir">
-                <p>Kirim Laporan</p>
+                <img src="{{ asset('img/online-registration.png') }}" alt="Pengiriman Formulir">                
+                <a href="{{ route('form') }}" class="no-underline"><p>Kirim Laporan</p></a>
             </div>
             <div class="help-card">
-                <img src="image/tracking.png" alt="Lacak Status">
-                <p>Lacak Status</p>
+                <img src="{{ asset('img/tracking.png') }}"  alt="Lacak Status">
+                <a href="{{ route('lacak_dm') }}" class="no-underline"><p>Lacak Status</p></a>
             </div>
         </div>
     </main>
+
+    <section class="steps-section">
+        <h2>Langkah Mudah Mengirim Laporan Kerusakan</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Masuk</h3>
+                <p>Masuk ke dalam website Delcare menggunakan akun dan kata sandi yang sudah dibagikan sebelumnya. Pastikan memakai akun milik sendiri.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Kirim Laporan</h3>
+                <p>Pilih opsi Kirim Laporan untuk mengirimkan laporan kerusakan.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Pengisian Laporan</h3>
+                <p>Isilah laporan tersebut dengan sebenar-benarnya dan sertakan bukti kerusakan untuk mempercepat tindakan perbaikan.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Lacak Status</h3>
+                <p>Pilih opsi ini untuk melihat aktivitas laporan yang sudah anda kirimkan.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <h3>Cek Status Secara Berkala</h3>
+                <p>Duktek dan Maintenance akan memberikan feedback untuk laporan yang kamu kirimkan.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">6</div>
+                <h3>Ulasan</h3>
+                <p>Berikan ulasanmu dengan jujur tentang performa perbaikan yang dilakukan.</p>
+            </div>
+        </div>
+    </section>
 
     <section class="faq-section">
         <h2>Pertanyaan Populer</h2>
@@ -91,42 +112,7 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-container">
-          <!-- Company Info Section -->
-          <div class="footer-section company-info">
-            <div class="company-logo-container">
-              <img src="image/logo-del.png" alt="Logo Perusahaan" class="company-logo">
-              <div>
-                <h3>Institut Teknologi Del</h3>
-                <p>Institut Teknologi Del selalu berusaha memberikan layanan dan produk yang berkualitas untuk memenuhi kebutuhan seluruh Civitas Akademika.</p>
-              </div>
-            </div>
-          </div>
-      
-          <!-- Contact Center Section -->
-          <div class="footer-section contact-center">
-            <h3>Layanan Contact Center Prakerja</h3>
-            <p><i class="fa fa-phone"></i> 082164592541 (Hanya Panggilan Darurat!)</p>
-            <p><i class="fa fa-whatsapp"></i> 085381822253 (Hanya Panggilan Darurat!)</p>
-          </div>  
-    
-          <!-- Operational Hours Section -->
-    <div class="footer-section operational-hours">
-        <h3>Jam Operasional</h3>
-        <p><i class="fa fa-calendar"></i> Senin - Jumat</p>
-        <p><i class="fa fa-clock-o"></i> Pukul 08.00 - 17.00 WIB</p>
-        <p><i class="fa fa-calendar"></i> Sabtu</p>
-        <p><i class="fa fa-clock-o"></i> Pukul 08.00 - 12.00 WIB</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 Institut Teknologi Del. All rights reserved.</p>
-    </div>
-  </footer>
-    
-
-    <script src="js/faq.js"></script>
-
+    <script src="{{ asset('js/faq.js') }}"></script>
+    @include('footer')
 </body>
 </html>
