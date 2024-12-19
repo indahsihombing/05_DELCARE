@@ -43,20 +43,20 @@
 <main class="container">
     <div class="container">
     <h2>Tuliskan Kendalamu</h2>
-    <form action="{{ route('form.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('form.store') }}" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
         @csrf
         <div class="form-group">
             <label for="namaLengkap" class="form-label">Nama Lengkap</label>
-            <input type="text" class="form-control" id="namaLengkap" name="nama_lengkap"  placeholder="Masukkan nama lengkapmu">
+            <input type="text" class="form-control" id="namaLengkap" name="nama_lengkap" placeholder="Masukkan nama lengkapmu" required>
         </div>
         <div class="form-group">
             <label for="nomorHandphone" class="form-label">Nomor Handphone</label>
-            <input type="text" class="form-control" id="nomorHandphone" name="nomor_handphone" placeholder="Masukkan nomor handphone">
+            <input type="text" class="form-control" id="nomorHandphone" name="nomor_handphone" placeholder="Masukkan nomor handphone" required>
         </div>
         <div class="form-group">
             <label for="programStudi" class="form-label">Program Studi</label>
-            <select class="form-select" id="programStudi" name="program_studi">
-                <option selected>Pilih program studi</option>
+            <select class="form-select" id="programStudi" name="program_studi" required>
+                <option value="" disabled selected>Pilih program studi</option>
                 <option value="S1 Sistem Informasi">S1 Sistem Informasi</option>
                 <option value="S1 Informatika">S1 Informatika</option>
                 <option value="S1 Tenik Elektro">S1 Tenik Elektro</option>
@@ -70,29 +70,51 @@
         </div>
         <div class="form-group">
             <label for="lokasiKerusakan" class="form-label">Lokasi Kerusakan</label>
-            <input type="text" class="form-control" id="lokasiKerusakan" name="lokasi_kerusakan" placeholder="Masukkan lokasi kerusakan">
+            <input type="text" class="form-control" id="lokasiKerusakan" name="lokasi_kerusakan" placeholder="Masukkan lokasi kerusakan" required>
         </div>
-
         <div class="form-group">
             <label for="deskripsiKerusakan" class="form-label">Deskripsi Kerusakan</label>
-            <textarea class="form-control" id="deskripsiKerusakan" name="deskripsi_kerusakan" rows="3" placeholder="Bagian ini harap isi dengan jelas dan detail bentuk kerusakan yang ditemukan."></textarea>
+            <textarea class="form-control" id="deskripsiKerusakan" name="deskripsi_kerusakan" rows="3" placeholder="Bagian ini harap isi dengan jelas dan detail bentuk kerusakan yang ditemukan." required></textarea>
         </div>
-
-        <div class="form-group>
+        <div class="form-group">
             <label for="ditujukanKepada" class="form-label">Ditujukan Kepada</label>
             <select class="form-control" id="ditujukanKepada" name="ditujukan_kepada" required>
-                <option value="">Pilih tujuan laporan</option>
+                <option value="" disabled selected>Pilih tujuan laporan</option>
                 <option value="Maintenance">Maintenance</option>
                 <option value="Duktek">Duktek</option>
             </select>
         </div>
-
         <div class="form-group">
             <label for="fotoKerusakan" class="form-label">Unggah Foto Bukti Kerusakan</label>
             <input class="form-control" type="file" id="fotoKerusakan" name="foto_kerusakan">
         </div>
-            <button type="submit" class="btn btn-primary">Kirim</button>
+        <button type="submit" class="btn btn-primary">Kirim</button>
     </form>
+    
+    <script>
+        function validateForm() {
+            const fields = [
+                { id: "namaLengkap", message: "Nama lengkap wajib diisi!" },
+                { id: "nomorHandphone", message: "Nomor handphone wajib diisi!" },
+                { id: "programStudi", message: "Program studi wajib dipilih!" },
+                { id: "lokasiKerusakan", message: "Lokasi kerusakan wajib diisi!" },
+                { id: "deskripsiKerusakan", message: "Deskripsi kerusakan wajib diisi!" },
+                { id: "ditujukanKepada", message: "Tujuan laporan wajib dipilih!" },
+            ];
+    
+            for (const field of fields) {
+                const element = document.getElementById(field.id);
+                if (!element.value) {
+                    alert(field.message);
+                    element.focus();
+                    return false;
+                }
+            }
+    
+            return true;
+        }
+    </script>
+    
 </main>
 
 @include('footer')
