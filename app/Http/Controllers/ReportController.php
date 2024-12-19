@@ -120,8 +120,6 @@ class ReportController extends Controller
         // Tambahkan HATEOAS links
         $links = [
             'self' => route('reports.show', ['id' => $report->id]),
-            'update' => route('reports.update', ['id' => $report->id]),
-            'delete' => route('reports.destroy', ['id' => $report->id]),
             'all_reports' => route('api.report.get'),
         ];
 

@@ -61,6 +61,11 @@
                 <h3>Ulasan</h3>
                 <p>Berikan ulasanmu dengan jujur tentang performa perbaikan yang dilakukan.</p>
             </div>
+            <div class="step-card">
+                <div class="step-number">7</div>
+                <h3>Panduan</h3>
+                <p>Lihat panduan sebagai langkah awal perbaikan. Panduan akan berisi semua kerusakan yang mampu diperbaiki secara mandiri. Namun jika tidak bisa, silahkan mengirimkan laporan.</p>
+            </div>
         </div>
     </section>
 
